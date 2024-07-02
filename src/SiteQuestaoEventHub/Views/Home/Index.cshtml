@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Pesquisa";
+}
+
+<div class="text-center">
+    <h3>Testes com Azure Event Hubs + Kubernetes</h3>
+    <h5>Quem vencerá a Copa América?</h5>
+    <br/>
+    @Html.ActionLink("Argentina", "VotoArgentina", "Votacao", null, new { @class = "btn btn-primary btn-xs" })
+    @Html.ActionLink("Brasil", "VotoBrasil", "Votacao", null, new { @class = "btn btn-success btn-xs" })
+    @Html.ActionLink("Uruguai", "VotoUruguai", "Votacao", null, new { @class = "btn btn-info btn-xs" })
+    @Html.ActionLink("Colombia", "VotoColombia", "Votacao", null, new { @class = "btn btn-danger btn-xs" })
+
+    @if (!String.IsNullOrWhiteSpace((string)TempData["Voto"]!))
+    {
+        <br/><br/>
+        <p>Obrigado pelo seu voto: <b>@TempData["Voto"]</b></p>
+    }
+</div>

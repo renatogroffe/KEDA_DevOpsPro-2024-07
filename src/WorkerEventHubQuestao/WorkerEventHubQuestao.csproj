@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-WorkerEventHubQuestao-f0794822-59b4-4cfd-a522-84bfd4614db2</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.EventHubs" Version="5.11.3" />
+    <PackageReference Include="Azure.Messaging.EventHubs.Processor" Version="5.11.3" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.22.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+</Project>

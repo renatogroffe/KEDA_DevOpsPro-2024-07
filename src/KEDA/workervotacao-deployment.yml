@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workervotacao
+spec:
+  selector:
+    matchLabels:
+      app: workervotacao
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: workervotacao
+    spec:
+      containers:
+      - name: workervotacao
+        image: renatogroffe/worker-enquete-copa-america-2024:1
+        env:
+        - name: AzureEventHubs__EventHub
+          value: topic-enquete
+        - name: AzureEventHubs__ConsumerGroup
+          value: workerenquete
+        - name: AzureEventHubs__BlobContainer
+          value: blobenquete
+        - name: ConnectionStrings__ApplicationInsights
+          valueFrom:
+            secretKeyRef:
+              name: workervotacaosecret
+              key: ConnectionAppInsights
+        - name: AzureEventHubs__EventHubsConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: workervotacaosecret
+              key: ConnectionAzureEventHubs
+        - name: AzureEventHubs__BlobStorageConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: workervotacaosecret
+              key: ConnectionAzureStorage
+        - name: ConnectionStrings__BaseVotacao
+          valueFrom:
+            secretKeyRef:
+              name: workervotacaosecret
+              key: ConnectionSqlServer
